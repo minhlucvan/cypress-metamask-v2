@@ -70,7 +70,8 @@ module.exports = {
     await module.exports.fixBlankPage();
     await puppeteer.waitAndType(unlockPageElements.passwordInput, password);
     await puppeteer.waitAndClick(unlockPageElements.unlockButton);
-    await puppeteer.waitFor(mainPageElements.walletOverview);
+    await puppeteer.metamaskWindow().waitForTimeout(1000);
+    // await puppeteer.waitFor(mainPageElements.walletOverview);
     await module.exports.closePopup();
     return true;
   },
@@ -616,6 +617,9 @@ module.exports = {
 
     await puppeteer.init();
     await puppeteer.assignWindows();
+    
+    await puppeteer.switchToMetamaskWindow();
+
     await puppeteer.assignActiveTabName('metamask');
     await puppeteer.metamaskWindow().waitForTimeout(1000);
     if (

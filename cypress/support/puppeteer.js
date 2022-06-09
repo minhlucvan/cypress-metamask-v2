@@ -38,9 +38,10 @@ module.exports = {
   assignWindows: async () => {
     let pages = await puppeteerBrowser.pages();
     for (const page of pages) {
+      page.setDefaultTimeout(60000);
       if (page.url().includes('integration')) {
         mainWindow = page;
-      } else if (page.url().includes('tests')) {
+      } else if (page.url().includes('specs')) {
         mainWindow = page;
       } else if (page.url().includes('extension')) {
         metamaskWindow = page;
