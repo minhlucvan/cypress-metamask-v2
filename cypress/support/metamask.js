@@ -594,8 +594,7 @@ module.exports = {
   },
   getWalletAddress: async () => {
     await switchToMetamaskIfNotActive();
-
-    await puppeteer.waitAndClick(mainPageElements.optionsMenu.button);
+    await puppeteer.waitForText('Add Token'); 
     await puppeteer.waitAndClick(mainPageElements.optionsMenu.button);
     await puppeteer.waitAndClick(
       mainPageElements.optionsMenu.accountDetailsButton,
