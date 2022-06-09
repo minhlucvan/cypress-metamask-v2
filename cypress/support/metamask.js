@@ -596,6 +596,7 @@ module.exports = {
     await switchToMetamaskIfNotActive();
 
     await puppeteer.waitAndClick(mainPageElements.optionsMenu.button);
+    await puppeteer.waitAndClick(mainPageElements.optionsMenu.button);
     await puppeteer.waitAndClick(
       mainPageElements.optionsMenu.accountDetailsButton,
     );
